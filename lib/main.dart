@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Pages/about.dart';
+import 'package:myapp/Pages/registrationForm.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,15 +22,19 @@ class MyApp extends StatelessWidget{
 }
 
 class HomeActivity extends StatelessWidget{
-  const HomeActivity({super.key});
+   const HomeActivity({super.key});
 
   mySnackBar(message, context){
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 
-
   @override
   Widget build(BuildContext context) {
+
+    ButtonStyle buttonStyle=ElevatedButton.styleFrom(
+      minimumSize: Size(double.infinity, 60)
+    );
+
     return Scaffold(
       appBar: AppBar(
           title: Text("My First App"),
@@ -78,6 +84,14 @@ class HomeActivity extends StatelessWidget{
             ListTile(leading: Icon(Icons.person), title: Text("Profile")),
             ListTile(leading: Icon(Icons.email), title: Text("Email")),
           ],
+        ),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Login'),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>  registrationForm()),);
+          },
         ),
       ),
     );
