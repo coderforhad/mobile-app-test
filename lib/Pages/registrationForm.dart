@@ -7,10 +7,13 @@ class registrationForm extends StatefulWidget{
 }
 
 class _LoginScreenState extends State<registrationForm> {
+  final myEmail = TextEditingController();
+  final myPassWord = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login Screen'),),
+      appBar: AppBar(title: Text('Login Form'),),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
@@ -31,6 +34,7 @@ class _LoginScreenState extends State<registrationForm> {
                 ),
                 TextField(
                   keyboardType: TextInputType.emailAddress,
+                  controller: myEmail,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(),
@@ -41,6 +45,8 @@ class _LoginScreenState extends State<registrationForm> {
                   height: 20,
                 ),
                 TextField(
+                  obscureText: true,
+                  controller: myPassWord,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     border: OutlineInputBorder(),
@@ -54,7 +60,12 @@ class _LoginScreenState extends State<registrationForm> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: (){}, child: Text("Login")),
+                    ElevatedButton(onPressed: (){
+                      var _email = myEmail.text;
+                      var _myPassWord = myPassWord.text;
+                      print("myEmail: " + _email);
+                      print("myPassWord: " + _myPassWord);
+                    }, child: Text("Login")),
                     SizedBox(
                       width: 20,
                     ),
